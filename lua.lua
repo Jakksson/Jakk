@@ -24,6 +24,9 @@ closeButton.TextStrokeTransparency = 0.8 -- Slightly stroke the text for better 
 closeButton.TextStrokeColor3 = Color3.fromRGB(0, 0, 0) -- Text stroke color (black)
 closeButton.Parent = frame
 
+-- Ensure the UI is visible by waiting for the player GUI to load properly
+screenGui.Enabled = true
+
 -- Function to remove the UI when the "X" button is clicked
 closeButton.MouseButton1Click:Connect(function()
     screenGui:Destroy() -- This will remove the UI

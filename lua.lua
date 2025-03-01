@@ -1,55 +1,47 @@
-local player = game.Players.LocalPlayer
-local playerGui = player:WaitForChild("PlayerGui")
-
--- Create ScreenGui
+-- Create a ScreenGui to hold the UI elements
 local screenGui = Instance.new("ScreenGui")
-screenGui.Parent = playerGui
 screenGui.Name = "CustomUI"
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
--- Create the main frame for the UI
+-- Create a main frame (container) for the UI
 local mainFrame = Instance.new("Frame")
-mainFrame.Parent = screenGui
-mainFrame.Size = UDim2.new(0, 400, 0, 300)
-mainFrame.Position = UDim2.new(0.5, -200, 0.5, -150)
-mainFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40) -- Dark Gray
+mainFrame.Size = UDim2.new(0, 400, 0, 300) -- Adjust the size as needed
+mainFrame.Position = UDim2.new(0.5, -200, 0.5, -150) -- Center the frame
+mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+mainFrame.BackgroundTransparency = 0.2
 mainFrame.BorderSizePixel = 0
-mainFrame.AnchorPoint = Vector2.new(0.5, 0.5) -- Center the frame
+mainFrame.Parent = screenGui
 
--- Add some text inside the frame
-local titleLabel = Instance.new("TextLabel")
-titleLabel.Parent = mainFrame
-titleLabel.Size = UDim2.new(1, 0, 0, 50)
-titleLabel.Position = UDim2.new(0, 0, 0, 0)
-titleLabel.Text = "Welcome to Roblox UI"
-titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-titleLabel.TextSize = 24
-titleLabel.BackgroundTransparency = 1
-titleLabel.TextAlign = Enum.TextAlign.Center
-titleLabel.TextXAlignment = Enum.TextXAlignment.Center
-titleLabel.TextYAlignment = Enum.TextYAlignment.Center
+-- Create a UI corner for rounded edges
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 15)
+corner.Parent = mainFrame
 
--- Create the close button (X in the top-right corner)
+-- Create the close button (X in the corner)
 local closeButton = Instance.new("TextButton")
-closeButton.Parent = mainFrame
 closeButton.Size = UDim2.new(0, 40, 0, 40)
-closeButton.Position = UDim2.new(1, -50, 0, -10) -- Position it at the top-right corner
+closeButton.Position = UDim2.new(1, -50, 0, 10) -- Position it in the top-right corner
+closeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
 closeButton.Text = "X"
 closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 closeButton.TextSize = 24
-closeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Red color for close button
 closeButton.BorderSizePixel = 0
-closeButton.TextButtonStyle = Enum.ButtonStyle.Custom
+closeButton.Parent = mainFrame
 
--- Hover effect for the close button
-closeButton.MouseEnter:Connect(function()
-    closeButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
-end)
-
-closeButton.MouseLeave:Connect(function()
-    closeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-end)
-
--- Close the UI when the close button is clicked
+-- Add functionality to close the UI when clicked
 closeButton.MouseButton1Click:Connect(function()
-    screenGui:Destroy()
+    screenGui:Destroy() -- This will remove the UI
 end)
+
+-- Optional: Add some text or elements to the UI to make it look cooler
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 50)
+title.Position = UDim2.new(0, 0, 0, 0)
+title.BackgroundTransparency = 1
+title.Text = "Your Cool UI"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.TextSize = 24
+title.TextAlign = Enum.TextAlign.Center
+title.Parent = mainFrame
+
+-- Optional: Add some more content or buttons if needed

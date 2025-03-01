@@ -13,7 +13,7 @@ mainFrame.Size = UDim2.new(0, 400, 0, 300)
 mainFrame.Position = UDim2.new(0.5, -200, 0.5, -150)
 mainFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40) -- Dark Gray
 mainFrame.BorderSizePixel = 0
-mainFrame.Rounding = UDim.new(0, 10) -- rounded corners
+mainFrame.AnchorPoint = Vector2.new(0.5, 0.5) -- Center the frame
 
 -- Add some text inside the frame
 local titleLabel = Instance.new("TextLabel")
@@ -32,13 +32,12 @@ titleLabel.TextYAlignment = Enum.TextYAlignment.Center
 local closeButton = Instance.new("TextButton")
 closeButton.Parent = mainFrame
 closeButton.Size = UDim2.new(0, 40, 0, 40)
-closeButton.Position = UDim2.new(1, -50, 0, -10)
+closeButton.Position = UDim2.new(1, -50, 0, -10) -- Position it at the top-right corner
 closeButton.Text = "X"
 closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 closeButton.TextSize = 24
 closeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Red color for close button
 closeButton.BorderSizePixel = 0
-closeButton.AutoButtonColor = false
 closeButton.TextButtonStyle = Enum.ButtonStyle.Custom
 
 -- Hover effect for the close button
